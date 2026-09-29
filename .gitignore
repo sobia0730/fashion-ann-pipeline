@@ -1,0 +1,13 @@
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.dvc/cache/
+.dvc/tmp/
+.dvc/config.local
+*.h5
+*.keras
+credentials.json
+client_secret*.json
+.env
+.DS_Store
