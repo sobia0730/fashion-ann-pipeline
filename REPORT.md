@@ -62,3 +62,13 @@ Do not include the client ID/secret or `.dvc/tmp/gdrive-user-credentials.json` i
 Use two branches that edit the same normalization line and regenerate the processed artifact. Merge the branches, resolve the Python conflict, choose/regenerate the authoritative DVC pointer, run `dvc checkout`, verify `dvc status`, then run `dvc repro`.
 
 Attach screenshots of the conflict markers, resolved file, DVC status, and final graph before exporting this document as PDF.
+
+### Completed simulation
+
+- `teammate-sim` used power normalization: `x ** 0.95`.
+- `main` used logarithmic normalization: `log1p(x) / log1p(255)`.
+- Merge conflicts occurred in `src/preprocess.py` and `dvc.lock`.
+- The main/logarithmic version was selected as authoritative.
+- `dvc repro` completed after resolution and `dvc status` was clean.
+- Final resolved test accuracy: `0.8794`.
+- Final merge commit: `Resolve simulated code and DVC data conflicts`.
