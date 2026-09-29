@@ -14,8 +14,8 @@ def main() -> None:
         config = yaml.safe_load(file)["preprocess"]
 
     raw = np.load(INPUT)
-    x_train = raw["x_train"].astype("float32") / 255.0
-    x_test = raw["x_test"].astype("float32") / 255.0
+    x_train = np.power(raw["x_train"].astype("float32") / 255.0, 0.95)
+    x_test = np.power(raw["x_test"].astype("float32") / 255.0, 0.95)
     x_train, x_val, y_train, y_val = train_test_split(
         x_train,
         raw["y_train"],
