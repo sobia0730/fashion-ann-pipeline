@@ -1,0 +1,45 @@
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+      - src/prepare.py
+    outs:
+      - data/raw/data.npz
+
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+      - src/preprocess.py
+      - data/raw/data.npz
+    params:
+      - preprocess.validation_size
+      - preprocess.seed
+    outs:
+      - data/processed/data.npz
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - data/processed/data.npz
+    params:
+      - train.dense_units
+      - train.dropout_rate
+      - train.learning_rate
+      - train.epochs
+      - train.batch_size
+    outs:
+      - models/model.h5
+      - models/history.csv
+
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - models/model.h5
+      - data/processed/data.npz
+    metrics:
+      - metrics.json:
+          cache: false
+    outs:
+      - reports/confusion_matrix.png
