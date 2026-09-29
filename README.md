@@ -2,6 +2,8 @@
 
 End-to-end TensorFlow ANN classification pipeline managed with Git and DVC.
 
+This repository keeps code, configuration, and large generated artifacts reproducible.
+
 ## Quick start
 
 ```powershell
